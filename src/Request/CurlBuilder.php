@@ -19,7 +19,6 @@ class CurlBuilder
     public function get()
     {
         $ch = curl_init($this->data->getUrl());
-        curl_setopt($ch, CURLOPT_HEADER,true);
         $method = $this->data->getMethod();
         if ($method !== 'GET') {
             $option = null;
@@ -40,18 +39,16 @@ class CurlBuilder
                 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
             }
         }
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         if($this->data->getBody()) {
             curl_setopt($ch, CURLOPT_POSTFIELDS, $this->data->getBody());
         }
-        else {
-            curl_setopt($ch, CURLOPT_NOBODY,true);
-        }
-
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
         $headers = $this->data->getHeaders();
-
+        curl_setopt($ch, CURLOPT_USERAGENT,'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.17 (KHTML, like Gecko) Chrome/24.0.1312.52 Safari/537.17');
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_AUTOREFERER, true);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 120);
         $curl_headers = array_map(function ($value, $key) {
                     return ["$key: $value"];
                 },

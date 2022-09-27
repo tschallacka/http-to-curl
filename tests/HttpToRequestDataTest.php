@@ -177,4 +177,5 @@ class HttpToRequestDataTest extends TestCase
         $this->assertEquals('bar', $data->getHeaders()['Foo']);
         $this->assertEmpty($data->getBody());
     }
+
 }

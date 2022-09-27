@@ -14,10 +14,10 @@ class CurlRequest
      * @throws FileNotFoundException
      * @example CurlRequest::doRequest('get_products.http', function($ch) { curl_setopt($ch, CURLOPT_TIMEOUT, 3); });
      */
-    public static function doRequest(string $filepath, callable $callable = null): ?string
+    public static function doRequest(string $filepath, ?callable $callable = null): ?string
     {
         $response = null;
-        $curl = self::getCurlBuilder()->get();
+        $curl = self::getCurlBuilder($filepath)->get();
         if ($curl) {
             if($callable) {
                 $callable($curl);

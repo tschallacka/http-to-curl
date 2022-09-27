@@ -2,7 +2,6 @@
     "name": "tschallacka/http-to-curl",
     "description": "A library that transforms PHPStorm's http request files to a PHP Curl resource",
     "type": "library",
-    "version": "1.0.0",
     "license": "MIT",
     "autoload": {
         "psr-4": {

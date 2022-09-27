@@ -65,3 +65,6 @@ if ($curl) {
 echo $response;
 ```
 
+## Attribution
+
+Based and inspired on the original work by ahmadrosid at https://github.com/ahmadrosid/to-curl
